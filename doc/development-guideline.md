@@ -14,6 +14,23 @@
 
 ## 代碼風格規範
 
+### ⚠️ Warning 處理原則
+
+**重要原則：將 Warning 當作 Error 對待**
+
+- **禁止提交有 Warning 的代碼**：所有 Warning 都必須修復後才能提交
+- **不要輕易產生 Warning**：Warning 會造成開發困擾，影響代碼品質和團隊效率
+- **原因**：
+  - Warning 會掩蓋真正的問題
+  - 累積的 Warning 會讓開發者難以識別重要訊息
+  - 保持代碼庫乾淨，避免技術債務
+
+**適用範圍**：
+- TypeScript 編譯警告
+- ESLint 警告
+- Build 過程中的警告
+- 測試執行時的警告
+
 ### TypeScript / JavaScript
 
 - **縮進**：使用 2 個空格（符合 EditorConfig）
@@ -254,7 +271,7 @@ pnpm build
 - ✅ Build 必須成功
 - ✅ 沒有 TypeScript 類型錯誤
 - ✅ 沒有編譯錯誤
-- ✅ 沒有警告（盡可能修復）
+- ✅ **沒有 Warning**：所有 Warning 都必須修復，將 Warning 當作 Error 對待
 
 #### 3. 代碼檢查
 
@@ -278,6 +295,7 @@ pnpm build
 - ❌ 測試未通過
 - ❌ Build 失敗
 - ❌ 有 TypeScript 類型錯誤
+- ❌ **有 Warning**：任何 Warning 都必須修復後才能提交
 - ❌ 有硬編碼的顏色/樣式值
 - ❌ 新增功能沒有對應測試
 - ❌ 有 console.log 或調試代碼
@@ -471,6 +489,7 @@ Code Review 的主要目的是：
 - ✅ 是否符合專案的代碼風格規範？
 - ✅ 命名是否清晰有意義？
 - ✅ 是否有適當的註釋？
+- ✅ **是否有 Warning**：必須確保沒有 Warning，將 Warning 當作 Error 對待
 
 #### 性能
 
@@ -512,6 +531,7 @@ Code Review 的主要目的是：
 - 安全問題
 - 測試覆蓋不足
 - 違反核心規範
+- **有 Warning**：任何 Warning 都必須修復，將 Warning 當作 Error 對待
 
 **標記方式**：使用 `[MUST FIX]` 或 `[BLOCKING]` 前綴
 
