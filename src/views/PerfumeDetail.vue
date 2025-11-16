@@ -340,8 +340,21 @@ function formatDate(dateString: string): string {
   background: var(--bg-card);
   border-radius: var(--radius-xl);
   padding: 48px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-xl);
   border: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.perfume-detail::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .image-section {
@@ -352,15 +365,16 @@ function formatDate(dateString: string): string {
 .perfume-image {
   width: 100%;
   height: auto;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl), var(--shadow-colored);
   margin-bottom: 32px;
   border: 1px solid var(--border-light);
-  transition: transform 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .perfume-image:hover {
-  transform: scale(1.02);
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: var(--shadow-xl), var(--shadow-glow);
 }
 
 .image-actions {
@@ -381,11 +395,12 @@ function formatDate(dateString: string): string {
 
 .perfume-name {
   margin: 0;
-  font-size: 40px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -1.2px;
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--primary-color);
+  letter-spacing: -1.5px;
   line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .brand-name {
@@ -419,10 +434,11 @@ function formatDate(dateString: string): string {
 }
 
 .price-value {
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 36px;
+  font-weight: 900;
   color: var(--accent-color);
-  letter-spacing: -0.8px;
+  letter-spacing: -1px;
+  text-shadow: 1px 1px 2px rgba(212, 175, 55, 0.2);
 }
 
 .concentration-section,
@@ -512,17 +528,17 @@ function formatDate(dateString: string): string {
 }
 
 :deep(.el-button--primary) {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  border: none;
   border-radius: var(--radius-md);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-md);
 }
 
 :deep(.el-button--primary:hover) {
-  background-color: var(--accent-hover);
-  border-color: var(--accent-hover);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, var(--accent-hover) 100%);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg), var(--shadow-colored);
 }
 
 .reviews-list {
@@ -533,7 +549,7 @@ function formatDate(dateString: string): string {
 
 .review-card {
   padding: 24px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border-light);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: var(--bg-card);
@@ -541,9 +557,9 @@ function formatDate(dateString: string): string {
 }
 
 .review-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-  border-color: var(--accent-color);
+  box-shadow: var(--shadow-lg), var(--shadow-colored);
+  transform: translateY(-4px);
+  border-color: var(--primary-color);
 }
 
 .review-header {

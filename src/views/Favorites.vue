@@ -86,22 +86,41 @@ async function loadFavoritePerfumes() {
 
 .page-title {
   margin: 0 0 16px 0;
-  font-size: 42px;
-  font-weight: 700;
-  color: var(--text-primary);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
-  letter-spacing: -1.2px;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-purple) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  letter-spacing: -1.5px;
+  animation: titleFloat 3s ease-in-out infinite;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes titleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 .page-title .el-icon {
-  color: var(--accent-purple);
+  color: var(--accent-color);
+  animation: starPulse 2s ease-in-out infinite;
+}
+
+@keyframes starPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 16px rgba(212, 175, 55, 0.6));
+  }
 }
 
 .page-subtitle {
@@ -111,9 +130,9 @@ async function loadFavoritePerfumes() {
 }
 
 .page-subtitle strong {
-  color: var(--accent-purple);
-  font-size: 18px;
-  font-weight: 700;
+  color: var(--accent-color);
+  font-size: 20px;
+  font-weight: 800;
 }
 
 .loading-container {
@@ -129,7 +148,9 @@ async function loadFavoritePerfumes() {
 .perfume-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 32px;
+  gap: 36px;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {

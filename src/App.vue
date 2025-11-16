@@ -3,7 +3,7 @@
     <el-header class="app-header">
       <div class="header-content">
         <router-link to="/" class="logo">
-          <h1>🌸 香水世界</h1>
+          <h1>Perfume Gallery</h1>
         </router-link>
         <el-menu
           mode="horizontal"
@@ -53,18 +53,19 @@ const favoritesCount = computed(() => userStore.favoritesCount)
 }
 
 .app-header {
-  background: var(--bg-overlay);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-light);
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
   padding: 0;
   height: 80px;
   display: flex;
   align-items: center;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-lg);
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: all 0.3s ease;
 }
 
 .header-content {
@@ -93,19 +94,20 @@ const favoritesCount = computed(() => userStore.favoritesCount)
 
 .logo {
   text-decoration: none;
-  color: white;
 }
 
 .logo h1 {
   margin: 0;
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.8px;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #1A202C;
+  transition: all 0.3s ease;
+}
+
+.logo:hover h1 {
+  color: var(--accent-color);
+  transform: translateY(-1px);
 }
 
 .header-menu {
@@ -140,9 +142,28 @@ const favoritesCount = computed(() => userStore.favoritesCount)
 
 .app-main {
   flex: 1;
-  background: linear-gradient(to bottom, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(232, 180, 184, 0.04) 0%, transparent 50%),
+    linear-gradient(to bottom, var(--bg-primary) 0%, var(--bg-secondary) 100%);
   padding: 48px 24px;
   min-height: calc(100vh - 160px);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-main::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle, rgba(212, 175, 55, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .app-footer {

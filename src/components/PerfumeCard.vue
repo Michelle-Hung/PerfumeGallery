@@ -112,7 +112,7 @@ function getGenderTagType(gender: Gender): 'success' | 'danger' | 'info' {
 <style scoped>
 .perfume-card {
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -121,31 +121,64 @@ function getGenderTagType(gender: Gender): 'success' | 'danger' | 'info' {
   background: var(--bg-card);
   border: 1px solid var(--border-light);
   box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.perfume-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--radius-lg);
+  padding: 2px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.perfume-card:hover::before {
+  opacity: 1;
 }
 
 .perfume-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
-  border-color: var(--accent-color);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: var(--shadow-xl), var(--shadow-colored);
 }
 
 .card-image-wrapper {
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 320px;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  background: linear-gradient(135deg, #FAF3E0 0%, #F5E6D3 100%);
+}
+
+.card-image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.05) 100%);
+  pointer-events: none;
 }
 
 .perfume-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(1.05);
 }
 
 .perfume-card:hover .perfume-image {
-  transform: scale(1.08);
+  transform: scale(1.15) rotate(2deg);
 }
 
 .favorite-btn-wrapper {
@@ -157,16 +190,16 @@ function getGenderTagType(gender: Gender): 'success' | 'danger' | 'info' {
 
 .favorite-btn {
   background: var(--bg-overlay);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   box-shadow: var(--shadow-md);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid var(--border-light);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .favorite-btn:hover {
-  box-shadow: var(--shadow-lg);
-  transform: scale(1.1);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  transform: scale(1.15) rotate(12deg);
   background: var(--bg-card);
 }
 
@@ -186,14 +219,19 @@ function getGenderTagType(gender: Gender): 'success' | 'danger' | 'info' {
 
 .perfume-name {
   margin: 0 0 8px 0;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 19px;
+  font-weight: 700;
   color: var(--text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.6px;
   line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.perfume-card:hover .perfume-name {
+  color: var(--primary-color);
 }
 
 .brand-name {
@@ -244,10 +282,11 @@ function getGenderTagType(gender: Gender): 'success' | 'danger' | 'info' {
 }
 
 .price {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 800;
   color: var(--accent-color);
-  letter-spacing: -0.4px;
+  letter-spacing: -0.6px;
+  text-shadow: 1px 1px 2px rgba(212, 175, 55, 0.15);
 }
 
 :deep(.el-rate__text) {

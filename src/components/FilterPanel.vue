@@ -212,12 +212,15 @@ function getGenderText(gender: Gender): string {
   align-items: center;
 }
 
-.filter-title {
-  font-size: 16px;
+:deep(.filter-header .el-button) {
+  color: white;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+:deep(.filter-header .el-button:hover) {
+  opacity: 1;
 }
 
 .filter-section {
@@ -274,25 +277,53 @@ function getGenderText(gender: Gender): string {
 
 :deep(.el-card__header) {
   padding: 24px;
-  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
-  border-bottom: 1px solid var(--border-light);
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  border-bottom: none;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.filter-title {
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  letter-spacing: 0.5px;
 }
 
 .filter-panel {
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   border: 1px solid var(--border-light);
   box-shadow: var(--shadow-md);
   background: var(--bg-card);
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .filter-panel:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg), var(--shadow-colored);
+  transform: translateY(-2px);
 }
 
 :deep(.el-card__body) {
-  padding: 16px;
+  padding: 24px;
+  background: var(--bg-card);
+}
+
+:deep(.el-checkbox) {
+  transition: all 0.2s ease;
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+}
+
+:deep(.el-checkbox:hover) {
+  background-color: var(--bg-secondary);
+}
+
+:deep(.el-checkbox__input.is-checked .el-checkbox__inner) {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  border-color: var(--primary-color);
 }
 </style>
 

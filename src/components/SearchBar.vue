@@ -80,37 +80,41 @@ function handleSearchClick() {
 }
 
 :deep(.el-input__wrapper) {
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--border-light);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: var(--bg-card);
+  padding: 8px 16px;
 }
 
 :deep(.el-input__wrapper:hover) {
-  border-color: var(--accent-color);
-  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
 
 :deep(.el-input__wrapper.is-focus) {
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.08), var(--shadow-lg);
+  transform: translateY(-2px);
 }
 
 :deep(.el-button) {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  border: none;
   color: white;
-  border-radius: var(--radius-md);
+  border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-weight: 500;
+  font-weight: 600;
+  padding: 0 32px;
+  box-shadow: var(--shadow-md);
 }
 
 :deep(.el-button:hover) {
-  background-color: var(--accent-hover);
-  border-color: var(--accent-hover);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, var(--accent-hover) 100%);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg), var(--shadow-colored);
 }
 </style>
 

@@ -2,7 +2,7 @@
   <div class="home-container">
     <!-- 搜尋區域 -->
     <div class="search-section">
-      <h2 class="section-title">探索香水世界</h2>
+      <h2 class="section-title">Perfume Gallery</h2>
       <SearchBar
         v-model="perfumeStore.searchKeyword"
         @search="handleSearch"
@@ -138,16 +138,24 @@ function handleClearFilters() {
 }
 
 .section-title {
-  margin: 0 0 40px 0;
-  font-size: 42px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -1.2px;
+  margin: 0 0 48px 0;
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: -1.5px;
   line-height: 1.2;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-color);
+  position: relative;
+  animation: titleFloat 3s ease-in-out infinite;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes titleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 .content-section {
@@ -187,8 +195,10 @@ function handleClearFilters() {
 .perfume-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 32px;
+  gap: 36px;
   margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
 }
 
 .pagination-container {
